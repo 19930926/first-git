@@ -1,7 +1,6 @@
 package controllers.employees;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Report;
+import models.Employee;
 /**
  * Servlet implementation class EmployeesNewServlet
  */
@@ -30,15 +29,12 @@ public class EmployeesNewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    request.setAttribute("_token", request.getSession().getId());
+		// TOrequest.setAttribute("_token", request.getSession().getId());
+        request.setAttribute("employee", new Employee());
 
-        Report r = new Report();
-        r.setReport_date(new Date(System.currentTimeMillis()));
-        request.setAttribute("report", r);
-
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new.jsp");
         rd.forward(request, response);
+
 	}
 
 }
